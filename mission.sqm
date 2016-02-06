@@ -112,7 +112,11 @@ class Mission
 				};
 				class Item1
 				{
+<<<<<<< HEAD
 					position[]={3691.4961,118.17439,1208.8938};
+=======
+					position[]={3694.7329,118.15014,1205.9946};
+>>>>>>> origin/master
 					class args
 					{
 						items=7;
@@ -169,7 +173,11 @@ class Mission
 				};
 				class Item2
 				{
+<<<<<<< HEAD
 					position[]={3694.1611,118.17133,1208.9795};
+=======
+					position[]={3690.6726,118.17006,1207.2769};
+>>>>>>> origin/master
 					class args
 					{
 						items=16;
@@ -211,7 +219,11 @@ class Mission
 						};
 						class Item6
 						{
+<<<<<<< HEAD
 							value="0";
+=======
+							value="1";
+>>>>>>> origin/master
 							parentCls="AGM_ModuleMedical";
 							typeName="RequireDiagnosis";
 						};
