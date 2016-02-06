@@ -28,7 +28,7 @@ class Mission
 	randomSeed=16113391;
 	class Intel
 	{
-		briefingName="Operation Geronimo v0.10b";
+		briefingName="Operation Geronimo v0.10c";
 		startWind=0.099999994;
 		startWaves=0.099999994;
 		forecastWind=0.099999994;

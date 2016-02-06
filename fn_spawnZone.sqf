@@ -46,7 +46,7 @@ pilot setPos (_spawner modelToWorld[6,8]);
 [pilot] join grpNull;
 
 //Adds Uniform and gear to the pilot.
-0 = []spawn {pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
+[]spawn {pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
 {pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
    "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
    "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
