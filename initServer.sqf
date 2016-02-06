@@ -5,6 +5,6 @@
 // Initialize dynamic groups
 ["Initialize",[true]] call BIS_fnc_dynamicGroups;
 
-// Remove onPlayerDisconnected orphaned groups
-[]spawn RC_fnc_spawnZone;
+// Randomly selcts player & Moves them
+//[]spawn RC_fnc_spawnZone;
 
