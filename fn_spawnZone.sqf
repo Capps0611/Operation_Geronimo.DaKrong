@@ -6,7 +6,7 @@
 #define SELF {_this call (missionNamespace getVariable ["RC_fnc_spawnZone"]);}
 
 locations = [];
-_heli =  "I_Heli_light_03_unarmed_F" createVehicle getMarkerPos "veh_create";
+_heli =  "GR_UH1H_2" createVehicle getMarkerPos "veh_create";
 removeFromRemainsCollector [_heli];
 
 //remember to switch "switchableUnits"-SP to "playableUnits"-MP
@@ -41,7 +41,9 @@ for [{_i=999},{_i<=4500},{_i=_i+50}] do
 _spawner = "Intel_File1_F" createVehicle (locations select floor (random (count locations)));
 _spawner allowDamage false;
 _heli setDamage 1;
-_heli setPos (_spawner modelToWorld[-3.00561523,-0.00012207,-1.86232]); 
+_heli setPos (_spawner modelToWorld[-3.00561523,-0.00012207,-1.86232]);
+_OnFire = "test_EmptyObjectForFireBig" createVehicle (getPos _heli);
+_OnFire attachTo [_heli,[0,1,0]];
 pilot setPos (_spawner modelToWorld[6,8]);
 [pilot] join grpNull;
 
@@ -72,8 +74,9 @@ deleteVehicle _spawner;
 
 if(name pilot == name player)then
 {
-	hint "You've just survived a crash, your crew is dead and the VC are coming. Stay alive until rescue comes! ";
+	{hint "You've just survived a crash, your crew is dead and the VC are coming. Stay alive until rescue comes!";} spawn BIS_fnc_spawn;
 }else
 {
-	hint format["Your objective is to find %1, they were shot down by the VC earlier today. Their survival is in your hands, coordinate with your teammates and find our downed Airmen!",name pilot];
+	[[[format["Your objective is to find %1, they were shot down by the VC earlier today. Their survival is in your hands, coordinate with your teammates and find our downed Airmen!",name pilot]], {hint (_this select 0);}], "BIS_fnc_spawn", true, false, false] call BIS_fnc_MP;
+	//hint format["Your objective is to find %1, they were shot down by the VC earlier today. Their survival is in your hands, coordinate with your teammates and find our downed Airmen!",name pilot];
 };

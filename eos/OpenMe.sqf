@@ -25,4 +25,4 @@ EOS_KILLCOUNTER=false;		// Counts killed units
 //null = [["EOSinf_1","EOSinf_2"],[3,1],[2,3,75],[0,0],[0],[0],[0,0],[0,0,350,EAST,TRUE]] call EOS_Spawn;
 //null = [["EOSmot_1","EOSmot_2"],[0,0],[0,0],[3,1,90],[2,60],[0],[1,0,90],[0,0,350,EAST,FALSE]] call EOS_Spawn;
 //null = [["BAS_zone_1"],[0,1],[0,2],[0],[1,2],[0,0,EAST,TRUE],[0,2,120,TRUE,FALSE]] call Bastion_Spawn;
-null = [["zone1","zone2","zone3","zone4","zone5","zone6","zone7","zone8", "zone9"],[3,1],[5,2,75],[0,0],[0],[0],[0,0],[5,1,350,EAST,TRUE]] call EOS_Spawn;
+null = [["zone1","zone2","zone3","zone4","zone5","zone6","zone7","zone8", "zone9", "zone10", "zone11", "zone12", "zone13", "zone14", "zone15", "zone16", "zone17", "zone18", "zone19", "zone20"],[3,1],[8,2],[0,0],[0],[0],[0,0],[5,1,350,EAST,TRUE]] call EOS_Spawn;

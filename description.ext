@@ -1,7 +1,7 @@
 ﻿author = "Capps";
-briefingName = "Operation Geronimo v0.10 Beta";
+briefingName = "Operation Geronimo v0.11 Beta";
 onLoadMission = "PUBLIC BETA";
-onLoadName = "Operation Geronimo v0.10";
+onLoadName = "Operation Geronimo v0.11";
 overviewText = "Find and Recover the downed Airmen";
 overviewPicture = "\uns_patches\ui\uns_mod_dlc_ca.paa";
 overviewTextLocked = "";

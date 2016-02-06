@@ -11,7 +11,9 @@ class Mission
 		"A3_Supplies_F_Heli_CargoNets",
 		"A3_Structures_F_Mil_Helipads",
 		"task_force_radio_items",
-		"agm_medical"
+		"agm_medical",
+		"GR_Medium_Utility_Helicopters",
+		"A3_Structures_F_Civ_InfoBoards"
 	};
 	addOnsAuto[]=
 	{
@@ -20,15 +22,16 @@ class Mission
 		"task_force_radio_items",
 		"agm_medical",
 		"A3_Modules_F_Multiplayer",
-		"A3_Air_F_EPB_Heli_Light_03",
+		"GR_Medium_Utility_Helicopters",
 		"A3_Supplies_F_Heli_CargoNets",
 		"A3_Structures_F_Mil_Helipads",
+		"A3_Structures_F_Civ_InfoBoards",
 		"dakrong"
 	};
 	randomSeed=16113391;
 	class Intel
 	{
-		briefingName="Operation Geronimo v0.10c";
+		briefingName="Operation Geronimo v0.11";
 		startWind=0.099999994;
 		startWaves=0.099999994;
 		forecastWind=0.099999994;
@@ -500,7 +503,7 @@ class Mission
 						};
 						class Item3
 						{
-							value="clearItemCargoGlobal (_this select 0);clearWeaponCargoGlobal (_this select 0); clearMagazineCargoGlobal (_this select 0); 0 =[(_this select 0)] execVM ""fn_transHeli_texture.sqf"";";
+							value="clearItemCargoGlobal (_this select 0);clearWeaponCargoGlobal (_this select 0); clearMagazineCargoGlobal (_this select 0);";
 							parentCls="ModuleRespawnVehicle_F";
 							typeName="Init";
 						};
@@ -555,17 +558,17 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=6;
+		items=9;
 		class Item0
 		{
-			position[]={3657.3271,119.01578,1162.5674};
+			position[]={3657.1038,117.91186,1162.7913};
 			azimut=330;
 			id=24;
 			side="EMPTY";
-			vehicle="I_Heli_light_03_F";
+			vehicle="GR_UH1H_3";
 			leader=1;
 			skill=0.60000002;
-			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
+			init="clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
 			syncId=4;
 			synchronizations[]={3};
 		};
@@ -596,10 +599,10 @@ class Mission
 			azimut=330;
 			id=27;
 			side="EMPTY";
-			vehicle="I_Heli_light_03_F";
+			vehicle="GR_UH1H_2";
 			leader=1;
 			skill=0.60000002;
-			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
+			init="clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
 			syncId=5;
 			synchronizations[]={3};
 		};
@@ -619,17 +622,51 @@ class Mission
 			azimut=330;
 			id=29;
 			side="EMPTY";
-			vehicle="I_Heli_light_03_F";
+			vehicle="GR_UH1H_2";
 			leader=1;
 			skill=0.60000002;
-			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
+			init="clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
 			syncId=6;
 			synchronizations[]={3};
+		};
+		class Item6
+		{
+			position[]={3644.8267,117.91569,1171.4825};
+			azimut=407.04901;
+			id=30;
+			side="EMPTY";
+			vehicle="Land_Noticeboard_F";
+			leader=1;
+			skill=0.60000002;
+			init="this allowDamage false;_action = this addAction[""<t color=""""#F71919"""">""+""Repair/Rearm/Refuel"",{_xhandle= [vehicle player] execVM ""fn_v_reload.sqf""}];";
+		};
+		class Item7
+		{
+			position[]={3656.6921,117.95219,1168.4137};
+			azimut=396.061;
+			offsetY=1.05;
+			id=31;
+			side="EMPTY";
+			vehicle="Land_Noticeboard_F";
+			leader=1;
+			skill=0.60000002;
+			init="this allowDamage false;_action = this addAction[""<t color=""""#F71919"""">""+""Repair/Rearm/Refuel"",{_xhandle= [vehicle player] execVM ""fn_v_reload.sqf""}];";
+		};
+		class Item8
+		{
+			position[]={3672.6084,117.92105,1162.1129};
+			azimut=369.1489;
+			id=32;
+			side="EMPTY";
+			vehicle="Land_Noticeboard_F";
+			leader=1;
+			skill=0.60000002;
+			init="this allowDamage false;_action = this addAction[""<t color=""""#F71919"""">""+""Repair/Rearm/Refuel"",{_xhandle= [vehicle player] execVM ""fn_v_reload.sqf""}];";
 		};
 	};
 	class Markers
 	{
-		items=11;
+		items=23;
 		class Item0
 		{
 			position[]={265.13068,66.266922,-463.78174};
@@ -723,10 +760,116 @@ class Mission
 			name="respawn_west";
 			type="Empty";
 		};
+		class Item11
+		{
+			position[]={3673.5635,120.46249,1200.1331};
+			name="bluFor_HQ";
+			text="Camp Sarge";
+			type="b_hq";
+		};
+		class Item12
+		{
+			position[]={497.34119,93.697296,3591.489};
+			name="zone10";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item13
+		{
+			position[]={497.85468,161.32063,2591.978};
+			name="zone11";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item14
+		{
+			position[]={499.08313,22.263727,1592.0253};
+			name="zone12";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item15
+		{
+			position[]={4483.9541,25.758314,3598.7959};
+			name="zone13";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item16
+		{
+			position[]={4489.6875,46.847038,2606.8782};
+			name="zone14";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item17
+		{
+			position[]={4501.1548,41.844826,1603.4937};
+			name="zone15";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item18
+		{
+			position[]={4501.0703,133.4463,4588.584};
+			name="zone16";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item19
+		{
+			position[]={3498.156,139.58351,4603.7275};
+			name="zone17";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item20
+		{
+			position[]={2484.1006,14.0414,4597.0098};
+			name="zone18";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item21
+		{
+			position[]={1495.01,2.8918197,4590.5454};
+			name="zone19";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
+		class Item22
+		{
+			position[]={486.52509,17.169214,4597.0093};
+			name="zone20";
+			markerType="RECTANGLE";
+			type="Empty";
+			a=500;
+			b=500;
+		};
 	};
 	class Sensors
 	{
-		items=2;
+		items=1;
 		class Item0
 		{
 			position[]={2443.7266,118.45091,2478.4766};
@@ -738,22 +881,6 @@ class Mission
 			age="UNKNOWN";
 			expCond="!alive (pilot)";
 			expActiv="endMission ""End1"";";
-			class Effects
-			{
-			};
-		};
-		class Item1
-		{
-			position[]={3673.7485,118.16167,1199.9745};
-			a=10;
-			b=10;
-			activationBy="WEST";
-			repeating=1;
-			interruptable=1;
-			age="UNKNOWN";
-			name="pilot_save";
-			expCond="this;round (time %1) == 1;";
-			expActiv="if(pilot in thisList) then{endMission ""End2"";}";
 			class Effects
 			{
 			};
