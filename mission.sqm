@@ -9,12 +9,16 @@ class Mission
 		"A3_Air_F_EPB_Heli_Light_03",
 		"A3_Modules_F_Multiplayer",
 		"A3_Supplies_F_Heli_CargoNets",
-		"A3_Structures_F_Mil_Helipads"
+		"A3_Structures_F_Mil_Helipads",
+		"task_force_radio_items",
+		"agm_medical"
 	};
 	addOnsAuto[]=
 	{
 		"uns_army",
 		"A3_Modules_F",
+		"task_force_radio_items",
+		"agm_medical",
 		"A3_Modules_F_Multiplayer",
 		"A3_Air_F_EPB_Heli_Light_03",
 		"A3_Supplies_F_Heli_CargoNets",
@@ -24,7 +28,7 @@ class Mission
 	randomSeed=16113391;
 	class Intel
 	{
-		briefingName="Operation Geronimo v0.10";
+		briefingName="Operation Geronimo v0.10a";
 		startWind=0.099999994;
 		startWaves=0.099999994;
 		forecastWind=0.099999994;
@@ -57,6 +61,8 @@ class Mission
 					leader=1;
 					rank="SERGEANT";
 					skill=0.60000002;
+					syncId=0;
+					synchronizations[]={1,2};
 				};
 				class Item1
 				{
@@ -93,7 +99,7 @@ class Mission
 			side="LOGIC";
 			class Vehicles
 			{
-				items=1;
+				items=3;
 				class Item0
 				{
 					position[]={3669.2449,118.0463,1178.7616};
@@ -103,6 +109,174 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="SERVER";
+				};
+				class Item1
+				{
+					position[]={3691.4961,118.17439,1208.8938};
+					class args
+					{
+						items=7;
+						class Item0
+						{
+							value="0";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="TeamLeaderRadio";
+						};
+						class Item1
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="RiflemanRadio";
+						};
+						class Item2
+						{
+							value="7";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="terrain_interception_coefficient";
+						};
+						class Item3
+						{
+							value="TaskForceRadio";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="radio_channel_name";
+						};
+						class Item4
+						{
+							value="123";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="radio_channel_password";
+						};
+						class Item5
+						{
+							value="0";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="same_sw_frequencies_for_side";
+						};
+						class Item6
+						{
+							value="1";
+							parentCls="tfar_ModuleTaskForceRadioEnforceUsage";
+							typeName="same_lr_frequencies_for_side";
+						};
+					};
+					id=5;
+					side="LOGIC";
+					vehicle="tfar_ModuleTaskForceRadioEnforceUsage";
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=1;
+					synchronizations[]={0};
+				};
+				class Item2
+				{
+					position[]={3694.1611,118.17133,1208.9795};
+					class args
+					{
+						items=16;
+						class Item0
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="CoefDamage";
+						};
+						class Item1
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="CoefBleeding";
+						};
+						class Item2
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="CoefPain";
+						};
+						class Item3
+						{
+							value="2";
+							parentCls="AGM_ModuleMedical";
+							typeName="CoefNonMedic";
+						};
+						class Item4
+						{
+							value="-1";
+							parentCls="AGM_ModuleMedical";
+							typeName="MaxUnconsciousnessTime";
+						};
+						class Item5
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="AllowNonmedics";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="RequireDiagnosis";
+						};
+						class Item7
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="PreventInstaDeath";
+						};
+						class Item8
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="PreventDeathWhileUnconscious";
+						};
+						class Item9
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="SingleBandage";
+						};
+						class Item10
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="AllowChatWhileUnconscious";
+						};
+						class Item11
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="EnableOverdosing";
+						};
+						class Item12
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="RequireMEDEVAC";
+						};
+						class Item13
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="TypeMEDEVAC";
+						};
+						class Item14
+						{
+							value="1";
+							parentCls="AGM_ModuleMedical";
+							typeName="AutomaticWakeup";
+						};
+						class Item15
+						{
+							value="0";
+							parentCls="AGM_ModuleMedical";
+							typeName="DisableScreams";
+						};
+					};
+					id=6;
+					side="LOGIC";
+					vehicle="AGM_ModuleMedical";
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=2;
+					synchronizations[]={0};
 				};
 			};
 		};
@@ -115,7 +289,7 @@ class Mission
 				class Item0
 				{
 					position[]={3670.4563,118.1885,1233.0719};
-					id=5;
+					id=7;
 					side="WEST";
 					vehicle="uns_army_1a";
 					player="PLAY CDG";
@@ -126,7 +300,7 @@ class Mission
 				class Item1
 				{
 					position[]={3668.5093,118.1786,1229.5278};
-					id=6;
+					id=8;
 					side="WEST";
 					vehicle="uns_army_2amed";
 					player="PLAY CDG";
@@ -136,7 +310,7 @@ class Mission
 				class Item2
 				{
 					position[]={3671.6218,118.19748,1226.5532};
-					id=7;
+					id=9;
 					side="WEST";
 					vehicle="uns_army_3amg";
 					player="PLAY CDG";
@@ -145,7 +319,7 @@ class Mission
 				class Item3
 				{
 					position[]={3675.1897,118.21159,1228.9628};
-					id=8;
+					id=10;
 					side="WEST";
 					vehicle="uns_army_7arto";
 					player="PLAY CDG";
@@ -162,7 +336,7 @@ class Mission
 				class Item0
 				{
 					position[]={3678.1072,118.22149,1238.537};
-					id=9;
+					id=11;
 					side="WEST";
 					vehicle="uns_army_1a";
 					player="PLAY CDG";
@@ -173,7 +347,7 @@ class Mission
 				class Item1
 				{
 					position[]={3676.1602,118.22134,1234.9929};
-					id=10;
+					id=12;
 					side="WEST";
 					vehicle="uns_army_2amed";
 					player="PLAY CDG";
@@ -183,7 +357,7 @@ class Mission
 				class Item2
 				{
 					position[]={3679.2727,118.22578,1232.0183};
-					id=11;
+					id=13;
 					side="WEST";
 					vehicle="uns_army_3amg";
 					player="PLAY CDG";
@@ -192,7 +366,7 @@ class Mission
 				class Item3
 				{
 					position[]={3682.8406,118.23573,1234.4279};
-					id=12;
+					id=14;
 					side="WEST";
 					vehicle="uns_army_7arto";
 					player="PLAY CDG";
@@ -209,7 +383,7 @@ class Mission
 				class Item0
 				{
 					position[]={3692.644,118.25182,1234.6022};
-					id=13;
+					id=15;
 					side="WEST";
 					vehicle="uns_army_1a";
 					player="PLAY CDG";
@@ -220,7 +394,7 @@ class Mission
 				class Item1
 				{
 					position[]={3690.697,118.24252,1231.0581};
-					id=14;
+					id=16;
 					side="WEST";
 					vehicle="uns_army_2amed";
 					player="PLAY CDG";
@@ -230,7 +404,7 @@ class Mission
 				class Item2
 				{
 					position[]={3693.8096,118.23865,1228.0835};
-					id=15;
+					id=17;
 					side="WEST";
 					vehicle="uns_army_3amg";
 					player="PLAY CDG";
@@ -239,7 +413,7 @@ class Mission
 				class Item3
 				{
 					position[]={3697.3774,118.24294,1230.493};
-					id=16;
+					id=18;
 					side="WEST";
 					vehicle="uns_army_7arto";
 					player="PLAY CDG";
@@ -256,7 +430,7 @@ class Mission
 				class Item0
 				{
 					position[]={3693.5186,118.22079,1221.8138};
-					id=17;
+					id=19;
 					side="WEST";
 					vehicle="uns_army_1a";
 					player="PLAY CDG";
@@ -267,7 +441,7 @@ class Mission
 				class Item1
 				{
 					position[]={3691.5715,118.20914,1218.2698};
-					id=18;
+					id=20;
 					side="WEST";
 					vehicle="uns_army_2amed";
 					player="PLAY CDG";
@@ -277,7 +451,7 @@ class Mission
 				class Item2
 				{
 					position[]={3694.6841,118.1925,1215.2952};
-					id=19;
+					id=21;
 					side="WEST";
 					vehicle="uns_army_3amg";
 					player="PLAY CDG";
@@ -286,7 +460,7 @@ class Mission
 				class Item3
 				{
 					position[]={3698.252,118.19302,1217.7047};
-					id=20;
+					id=22;
 					side="WEST";
 					vehicle="uns_army_7arto";
 					player="PLAY CDG";
@@ -367,14 +541,14 @@ class Mission
 							typeName="RespawnWhenDisabled";
 						};
 					};
-					id=21;
+					id=23;
 					side="LOGIC";
 					vehicle="ModuleRespawnVehicle_F";
 					leader=1;
 					lock="UNLOCKED";
 					skill=0.60000002;
-					syncId=0;
-					synchronizations[]={1,2,3};
+					syncId=3;
+					synchronizations[]={4,5,6};
 				};
 			};
 		};
@@ -386,20 +560,20 @@ class Mission
 		{
 			position[]={3657.3271,119.01578,1162.5674};
 			azimut=330;
-			id=22;
+			id=24;
 			side="EMPTY";
 			vehicle="I_Heli_light_03_F";
 			leader=1;
 			skill=0.60000002;
 			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
-			syncId=1;
-			synchronizations[]={0};
+			syncId=4;
+			synchronizations[]={3};
 		};
 		class Item1
 		{
 			position[]={3683.1946,118.21844,1222.0038};
 			azimut=330;
-			id=23;
+			id=25;
 			side="EMPTY";
 			vehicle="B_CargoNet_01_ammo_F";
 			leader=1;
@@ -410,7 +584,7 @@ class Mission
 		{
 			position[]={3641.0095,117.85946,1166.5325};
 			azimut=330;
-			id=24;
+			id=26;
 			side="EMPTY";
 			vehicle="Land_HelipadCircle_F";
 			leader=1;
@@ -420,20 +594,20 @@ class Mission
 		{
 			position[]={3641.5796,117.85651,1165.2445};
 			azimut=330;
-			id=25;
+			id=27;
 			side="EMPTY";
 			vehicle="I_Heli_light_03_F";
 			leader=1;
 			skill=0.60000002;
 			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
-			syncId=2;
-			synchronizations[]={0};
+			syncId=5;
+			synchronizations[]={3};
 		};
 		class Item4
 		{
 			position[]={3671.5618,117.87426,1156.4092};
 			azimut=266.1207;
-			id=26;
+			id=28;
 			side="EMPTY";
 			vehicle="Land_HelipadCircle_F";
 			leader=1;
@@ -443,14 +617,14 @@ class Mission
 		{
 			position[]={3673.1462,117.86149,1154.873};
 			azimut=330;
-			id=27;
+			id=29;
 			side="EMPTY";
 			vehicle="I_Heli_light_03_F";
 			leader=1;
 			skill=0.60000002;
 			init="0 = [this] execVM ""fn_transHeli_texture.sqf"";clearItemCargoGlobal this; clearWeaponCargoGlobal this; clearMagazineCargoGlobal this;";
-			syncId=3;
-			synchronizations[]={0};
+			syncId=6;
+			synchronizations[]={3};
 		};
 	};
 	class Markers

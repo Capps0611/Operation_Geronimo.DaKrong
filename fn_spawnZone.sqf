@@ -11,7 +11,11 @@ removeFromRemainsCollector [_heli];
 
 //remember to switch "switchableUnits"-SP to "playableUnits"-MP
 pilot = playableUnits select floor (random (count playableUnits));
-pilot setIdentity name player;
+pilot setIdentity name pilot;
+removeUniform pilot;
+removeVest pilot;
+removeBackpack pilot;
+removeAllWeapons pilot;
 
 
 for [{_i=999},{_i<=4500},{_i=_i+50}] do 
@@ -42,7 +46,7 @@ pilot setPos (_spawner modelToWorld[6,8]);
 [pilot] join grpNull;
 
 //Adds Uniform and gear to the pilot.
-pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
+0 = []spawn {pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
 {pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
    "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
    "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
@@ -56,17 +60,16 @@ pilot addVest "UNS_M1956_A1";
 pilot addBackpack "UNS_Alice_2";
 {pilot addItemToBackpack _x} foreach  ["AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Epipen","AGM_Epipen","AGM_Epipen",
    "AGM_Epipen","AGM_Epipen","AGM_Epipen","AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
-   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bloodbag","AGM_Bloodbag","AGM_Bloodbag",
-   "AGM_Bloodbag","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple",
-   "SmokeShellPurple","1Rnd_SmokePurple_Grenade_shell","1Rnd_SmokePurple_Grenade_shell","1Rnd_SmokePurple_Grenade_shell","1Rnd_SmokePurple_Grenade_shell"];
+   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple",
+   "SmokeShellPurple"];
 
 //Adds Weapons to the pilot.
 {pilot addWeapon _x} foreach["Colt1911","Rangefinder","NAM_CAR15_20"];
 
 pilot addHeadgear "UNS_TC_2";
-
+};
 deleteVehicle _spawner;
-sleep 10;
+
 if(name pilot == name player)then
 {
 	hint "You've just survived a crash, your crew is dead and the VC are coming. Stay alive until rescue comes! ";
