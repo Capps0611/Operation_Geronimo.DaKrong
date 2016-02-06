@@ -1,0 +1,95 @@
+﻿author = "Capps";
+briefingName = "Operation Geronimo v0.10 Beta";
+onLoadMission = "PUBLIC BETA";
+onLoadName = "Operation Geronimo v0.10";
+overviewText = "Find and Recover the downed Airmen";
+overviewPicture = "\uns_patches\ui\uns_mod_dlc_ca.paa";
+overviewTextLocked = "";
+
+allowFunctionsLog = 0;  // 1=enable
+enableDebugConsole = 0; // 1=host
+
+respawn = 3;
+respawnDelay = 10;
+respawnVehicleDelay = 120;
+respawnOnStart = -1;
+respawnTemplates[] = {"MenuPosition"};
+
+corpseManagerMode = 1;
+corpseLimit = 4;
+
+wreckManagerMode = 1;
+wreckLimit = 1;
+
+disabledAI = 1;
+aiKills = 1;
+saving = 0;
+
+class Header
+{
+gameType = Coop;
+minPlayers = 1;
+maxPlayers = 16;
+};
+
+class Params
+{
+	class Daytime
+	{
+		title = "Time";
+		values[] = {16,7,0};
+		texts[] = {"16:00","07:00","24:00"};
+		default = 7;
+	};
+	class Difficulty
+	{
+		title = "Skill";
+		values[] = {6,4,2};
+		texts[] = {"Recruit","Regular","Veteran"};
+		default = 4;
+	};
+
+	class Arsenal
+	{
+		title = "Arsenal";
+		values[] = {0,1};
+		texts[] = {"Unsung","Arma 3"};
+		default = 0;
+	};
+};
+
+class CfgDebriefing
+{  
+	class End1
+	{
+		title = "GAME OVER";
+		subtitle = "Mission failed";
+		description = "The pilot was killed!";
+		pictureBackground = "\a3\Ui_f\data\gui\cfg\Debriefing\debriefingbackground_co.paa";
+		picture = "b_inf";
+		pictureColor[] = {0.6,0.0,0.0,1};
+	};
+
+	class End2
+	{
+		title = "GAME OVER";
+		subtitle = "Mission accomplished";
+		description = "The Pilot was successfully returned to base!";
+		pictureBackground = "\a3\Ui_f\data\gui\cfg\Debriefing\debriefingbackground_co.paa";
+		picture = "b_inf";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+};
+
+class CfgFunctions
+{
+	class RC
+	{
+		class Client
+		{			
+			class spawnZone	{file = "fn_spawnZone.sqf";};
+		};
+	};
+};
+
+
