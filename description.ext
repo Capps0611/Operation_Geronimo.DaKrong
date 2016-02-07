@@ -49,12 +49,20 @@ class Params
 		default = 4;
 	};
 
-	class Arsenal
+	class OnFire
 	{
-		title = "Arsenal";
+		title = "Enable Constant Wreck Fire";
 		values[] = {0,1};
-		texts[] = {"Unsung","Arma 3"};
+		texts[] = {"On","Off"};
 		default = 0;
+	};
+	
+	class StartTime
+	{
+		title = "Time Until Mission Starts";
+		values[] = {2,5,10};
+		texts[] = {"2 mins","5 mins", "10 mins"};
+		default = 5;
 	};
 };
 

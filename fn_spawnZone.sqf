@@ -15,7 +15,8 @@ pilot setIdentity name pilot;
 removeUniform pilot;
 removeVest pilot;
 removeBackpack pilot;
-removeAllWeapons pilot;
+{pilot removeWeapon _x}foreach weapons pilot;
+pilot removeweapon "itemmap";
 
 
 for [{_i=999},{_i<=4500},{_i=_i+50}] do 
@@ -36,39 +37,57 @@ for [{_i=999},{_i<=4500},{_i=_i+50}] do
 	};
 };
 
-//hint format["%1", count locations];
 
 _spawner = "Intel_File1_F" createVehicle (locations select floor (random (count locations)));
 _spawner allowDamage false;
 _heli setDamage 1;
 _heli setPos (_spawner modelToWorld[-3.00561523,-0.00012207,-1.86232]);
-_OnFire = "test_EmptyObjectForFireBig" createVehicle (getPos _heli);
-_OnFire attachTo [_heli,[0,1,0]];
+if((paramsArray select 2) == 0) then
+{
+	_OnFire = "test_EmptyObjectForFireBig" createVehicle (getPos _heli);
+	_OnFire attachTo [_heli,[0,1,0]];
+
+};
 pilot setPos (_spawner modelToWorld[6,8]);
 [pilot] join grpNull;
 
+//Spawns Decoy Wrecks
+[] spawn
+{
+	for [{_i=0},{_i<=5},{_i=_i+1}] do
+	{
+		_thisHeli =  "GR_UH1H_2" createVehicle (locations select floor (random (count locations)));
+		_thisHeli setDamage 1;
+		removeFromRemainsCollector [_thisHeli];
+		_thisOnFire = "test_EmptyObjectForFireBig" createVehicle (getPos _thisHeli);
+		_thisOnFire attachTo [_thisHeli,[0,1,0]];
+	};
+};
+
 //Adds Uniform and gear to the pilot.
-[]spawn {pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
-{pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
-   "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
-   "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
+[]spawn 
+{
+	pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
+	{pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
+	   "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
+	   "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
 
-//Adds Vest and Gear to the pilot.   
-pilot addVest "UNS_M1956_A1";
-{pilot addItemToVest _x} foreach  ["AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Bandage","HandGrenade","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine",
-   "1911_Magazine","SmokeShell","SmokeShellPurple","SmokeShellPurple","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag"];
+	//Adds Vest and Gear to the pilot.   
+	pilot addVest "UNS_M1956_A1";
+	{pilot addItemToVest _x} foreach  ["AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Bandage","HandGrenade","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine",
+	   "1911_Magazine","SmokeShell","SmokeShellPurple","SmokeShellPurple","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag"];
 
-//Adds backpack and gear to the pilot.   
-pilot addBackpack "UNS_Alice_2";
-{pilot addItemToBackpack _x} foreach  ["AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Epipen","AGM_Epipen","AGM_Epipen",
-   "AGM_Epipen","AGM_Epipen","AGM_Epipen","AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
-   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple",
-   "SmokeShellPurple"];
+	//Adds backpack and gear to the pilot.   
+	pilot addBackpack "UNS_Alice_2";
+	{pilot addItemToBackpack _x} foreach  ["AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Epipen","AGM_Epipen","AGM_Epipen",
+	   "AGM_Epipen","AGM_Epipen","AGM_Epipen","AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+	   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple",
+	   "SmokeShellPurple"];
 
-//Adds Weapons to the pilot.
-{pilot addWeapon _x} foreach["Colt1911","Rangefinder","NAM_CAR15_20"];
+	//Adds Weapons to the pilot.
+	{pilot addWeaponGlobal _x} foreach["Colt1911","Rangefinder","NAM_CAR15_20"];
 
-pilot addHeadgear "UNS_TC_2";
+	pilot addHeadgear "UNS_TC_2";
 };
 deleteVehicle _spawner;
 

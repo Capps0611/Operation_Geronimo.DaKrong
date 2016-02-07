@@ -4,8 +4,8 @@ if(!isDedicated)then
 };
 //EOS SYSTEM
 []execVM "eos\OpenMe.sqf";
-[[["Mission Start in Two Minutes"], {hint (_this select 0);}], "BIS_fnc_spawn", true, false, false] call BIS_fnc_MP;
+[[[format["Mission Start in %1 Minutes",paramsArray select 3]], {hint (_this select 0);}], "BIS_fnc_spawn", true, false, false] call BIS_fnc_MP;
 //hint "Mission Start in Two Minutes";
-sleep 120;
+sleep ((paramsArray select 3) * 60);
 // Randomly selcts player & Moves them
 []spawn RC_fnc_spawnZone;

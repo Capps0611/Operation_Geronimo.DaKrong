@@ -31,7 +31,7 @@ class Mission
 	randomSeed=16113391;
 	class Intel
 	{
-		briefingName="Operation Geronimo v0.11";
+		briefingName="Operation Geronimo v0.11a";
 		startWind=0.099999994;
 		startWaves=0.099999994;
 		forecastWind=0.099999994;
@@ -762,7 +762,7 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={3673.5635,120.46249,1200.1331};
+			position[]={3673.4539,118.1614,1200.0234};
 			name="bluFor_HQ";
 			text="Camp Sarge";
 			type="b_hq";
@@ -869,18 +869,36 @@ class Mission
 	};
 	class Sensors
 	{
-		items=1;
+		items=2;
 		class Item0
 		{
-			position[]={2443.7266,118.45091,2478.4766};
-			a=2000;
-			b=2000;
+			position[]={2577.7107,155.41298,2529.719};
+			a=2600;
+			b=2600;
 			rectangular=1;
 			interruptable=1;
 			type="END1";
 			age="UNKNOWN";
-			expCond="!alive (pilot)";
-			expActiv="endMission ""End1"";";
+			name="mis_fail";
+			expCond="!alive pilot";
+			expActiv="0 = [[""end1"",false,true], ""BIS_fnc_endMission"", true, true] spawn BIS_fnc_MP;";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={3673.7524,118.16086,1199.7765};
+			a=4;
+			b=4;
+			angle=23.1472;
+			rectangular=1;
+			activationBy="ANY";
+			interruptable=1;
+			type="END2";
+			age="UNKNOWN";
+			expCond="pilot in thisList";
+			expActiv="0 = [[""end2"",true,true], ""BIS_fnc_endMission"", true, true] spawn BIS_fnc_MP;";
 			class Effects
 			{
 			};
