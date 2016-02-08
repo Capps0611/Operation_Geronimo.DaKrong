@@ -14,10 +14,35 @@ pilot = playableUnits select floor (random (count playableUnits));
 pilot setIdentity name pilot;
 removeUniform pilot;
 removeVest pilot;
-removeBackpack pilot;
-{pilot removeWeapon _x}foreach weapons pilot;
+removeBackpackGlobal pilot;
+{pilot removeWeaponGlobal _x}foreach weapons pilot;
 pilot removeweapon "itemmap";
+pilot removeweapon "itemradio";
 
+//Adds Uniform and gear to the pilot.
+[]spawn 
+{
+	//Adds backpack and gear to the pilot.   
+	pilot addBackpackGlobal "UNS_Alice_2";
+	{pilot addItemToBackpack _x} foreach ["AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Epipen","AGM_Epipen","AGM_Epipen",
+	   "AGM_Epipen","AGM_Epipen","AGM_Epipen","AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
+	   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple","SmokeShellPurple"];
+
+	pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
+	{pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
+	   "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
+	   "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
+
+	//Adds Vest and Gear to the pilot.   
+	pilot addVest "UNS_M1956_A1";
+	{pilot addItemToVest _x} foreach ["AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Bandage","HandGrenade","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine",
+	   "1911_Magazine","SmokeShell","SmokeShellPurple","SmokeShellPurple","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag"];
+
+	//Adds Weapons to the pilot.
+	{pilot addWeaponGlobal _x} foreach["Colt1911","Rangefinder","NAM_CAR15_20"];
+
+	pilot addHeadgear "UNS_TC_2";
+};
 
 for [{_i=999},{_i<=4500},{_i=_i+50}] do 
 {
@@ -64,31 +89,6 @@ pilot setPos (_spawner modelToWorld[6,8]);
 	};
 };
 
-//Adds Uniform and gear to the pilot.
-[]spawn 
-{
-	pilot addUniform  "UNS_ARMY_BDU_173rdAB1stlt";
-	{pilot addItemToUniform _x} foreach ["AGM_Bandage","AGM_Morphine","AGM_Bandage",
-	   "AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage",
-	   "AGM_Morphine","AGM_Bandage","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine"];
-
-	//Adds Vest and Gear to the pilot.   
-	pilot addVest "UNS_M1956_A1";
-	{pilot addItemToVest _x} foreach  ["AGM_Bandage","AGM_Bandage","AGM_Morphine","AGM_Bandage","AGM_Bandage","AGM_Bandage","HandGrenade","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine","1911_Magazine",
-	   "1911_Magazine","SmokeShell","SmokeShellPurple","SmokeShellPurple","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag","20Rnd_556x45_Stanag"];
-
-	//Adds backpack and gear to the pilot.   
-	pilot addBackpack "UNS_Alice_2";
-	{pilot addItemToBackpack _x} foreach  ["AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Morphine","AGM_Epipen","AGM_Epipen","AGM_Epipen",
-	   "AGM_Epipen","AGM_Epipen","AGM_Epipen","AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_Bandage",
-	   "AGM_Bandage","AGM_Bandage","AGM_Bandage","AGM_DefusalKit","AGM_EarBuds","AGM_Clacker","UNS_Bandana_OD","SmokeShell","SmokeShell","SmokeShellPurple",
-	   "SmokeShellPurple"];
-
-	//Adds Weapons to the pilot.
-	{pilot addWeaponGlobal _x} foreach["Colt1911","Rangefinder","NAM_CAR15_20"];
-
-	pilot addHeadgear "UNS_TC_2";
-};
 deleteVehicle _spawner;
 
 if(name pilot == name player)then
